@@ -3,10 +3,14 @@ var menuOpen = false;
 $('.trigger').click(function(){
   if (menuOpen == false){
     $('.menu').animate({'width': '40%', 'minWidth': '300px'});
+    $('.slideGroup').animate({'left': '-=' + window.innerWidth * 0.4});
+    $('.page').animate({'marginLeft': '20px'});
     $(this).css({'transition': 'transform 0.5s', 'transform': 'rotate(45deg)'});
     menuOpen = true;
   } else {
     $('.menu').animate({'width': '0px', 'minWidth': '0px', 'marginRight': '0px'});
+    $('.slideGroup').animate({'left': '+=' + window.innerWidth * 0.4});
+    $('.page').animate({'marginLeft': '0px'});
     $(this).css({'transition': 'transform 0.5s', 'transform': 'rotate(0deg)'});
     menuOpen = false;
   }
@@ -20,7 +24,6 @@ $('.page').click(function(){
 
 $('.menu li').click(function(){
   var liVal = $(this).attr('value');
-  // $('.trigger').click();
   $('.page').each(function(){
     if (liVal == $(this).attr('value')){
       $(this).animate({'opacity':'show'}, 1000);

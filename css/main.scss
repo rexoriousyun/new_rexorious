@@ -81,7 +81,6 @@ body {
 }
 
 header {
-  color: white;
   order: -1;
   width: 100%;
   display: flex;
@@ -112,7 +111,7 @@ h3 {
   font-weight: bold;
   font-family: Orkney-Medium;
   user-select: none;
-  cursor: pointer;
+  cursor: default;
 }
 
 h5 {
@@ -140,20 +139,21 @@ img {
 	max-height: 100%;
 }
 
-.trigger {
-  position: absolute;
-  right: 0;
-  margin-right: 20px;
-  cursor: pointer;
-}
-
 @keyframes rotate {
   from {transform: rotate(0deg)}
   to {transform: rotate(360deg)}
 }
 
-.trigger:hover {
-  animation: rotate 4s linear 0s infinite;
+.trigger {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  :hover {
+    animation: rotate 4s linear 0s infinite;
+  }
 }
 
 footer {
@@ -244,6 +244,7 @@ footer {
 }
 
 .works {
+  text-align: center;
   .category {
     position: relative;
     text-align: center;
@@ -259,7 +260,7 @@ footer {
         margin: 3px;
         text-align: center;
         .slide {
-          height: 600px;
+          height: 400px;
           width: 150px;
           transform: skew(-12deg);
           display: inline-block;
