@@ -81,12 +81,13 @@ body {
 }
 
 header {
-  order: -1;
   width: 100%;
   display: flex;
   height: 80px;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  z-index: 99999;
 }
 
 h1 {
@@ -119,7 +120,6 @@ h4 {
   font-weight: bold;
   font-family: Orkney-Medium;
   user-select: none;
-  cursor: default;
 }
 
 h5 {
@@ -127,6 +127,11 @@ h5 {
   font-weight: normal;
   font-family: Orkney-Medium;
   display: inline-block;
+}
+
+h6 {
+  margin: 5px 0;
+  line-height: 20px;
 }
 
 p {
@@ -162,15 +167,9 @@ img {
   :hover {
     animation: rotate 4s linear 0s infinite;
   }
-}
-
-footer {
-  color: white;
-  text-align: center;
-  display: flex;
-  height: 60px;
-  justify-content: center;
-  align-items: center;
+  h2 {
+    font-size: 40px;
+  }
 }
 
 .container {
@@ -210,6 +209,8 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 80px 0;
+  position: relative;
 }
 
 .page {
@@ -263,24 +264,42 @@ footer {
     }
   }
 }
-$width;
 
 .works {
   display: flex;
   flex-wrap: wrap;
+  .card[value='0'] .color {
+    background-color: #1cbe6f;
+  }
+  .card[value='1'] .color {
+    background-color: #ffa52e;
+  }
+  .card[value='2'] .color {
+    background-color: #89d0d6;
+  }
+  .card[value='3'] .color {
+    background-color: #0065a4;
+  }
+  .card[value='4'] .color {
+    background-color: #bf2226;
+  }
+  .card[value='5'] .color {
+    background-color: #575757;
+  }
   .card {
     width: 50%;
-    width: $width;
-    height: $width;
     position: relative;
+    max-height: 512px;
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
     img {
       width: 100%;
+      object-fit: cover;
     }
-    .dark {
+    .color {
       width: 100%;
       height: 100%;
-      background-color: #000;
-      opacity: 0.2;
       position: absolute;
       top: 0;
     }
@@ -292,10 +311,190 @@ $width;
       transform: translate(-50%, -50%);
     }
   }
+  .card:last-child {
+    margin-bottom: 60px;
+  }
 }
 
-@media (max-width: 767px) {
-  .page h1{
+.modal[value='0']{
+  background-color: #1cbe6f;
+}
+.modal[value='1']{
+  background-color: #ffa52e;
+}
+.modal[value='2']{
+  background-color: #89d0d6;
+}
+.modal[value='3']{
+  background-color: #0065a4;
+}
+.modal[value='4']{
+  background-color: #bf2226;
+}
+.modal[value='5']{
+  background-color: #575757;
+}
+.modal {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 40%;
+    max-height: 80%;
+    max-width: 512px;
+    object-fit: contain;
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-left: 40px;
+    a {
+      margin: 10px 0;
+      text-decoration: underline;
+    }
+  }
+  .front {
+    position: absolute;
+    left: 0;
     margin-left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    h2 {
+      cursor: pointer;
+    }
+  }
+  .back {
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    h2 {
+      cursor: pointer;
+    }
+  }
+}
+
+
+@media (max-width: 1024px) {
+  h4 {
+    font-size: 22px;
+  }
+  h5 {
+    font-size: 20px;
+  }
+  
+  h6 {
+    font-size: 16px;
+  }
+  
+  p {
+    font-size: 16px;
+  }
+  
+  a {
+    font-size: 18px; 
+  }
+  .card {
+    height: 492px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    height: 364px;
+  }
+}
+@media (max-width: 767px) {
+  .contact .item img {
+    width: 60px;
+  }
+  .card {
+    height: 348px;
+  }
+  h1 {
+    font-size: 110px;
+  }
+  h2 {
+    font-size: 23px;
+  }
+  h3 {
+    font-size: 23px;
+  }
+  .logo h3 {
+    margin-top: 10px;
+  }
+  h4 {
+    font-size: 18px;
+  }
+  h5 {
+    font-size: 16px;
+  }
+  
+  h6 {
+    font-size: 14px;
+  }
+  
+  p {
+    font-size: 14px;
+  }
+  
+  a {
+    font-size: 16px; 
+  }
+}
+@media (max-width: 600px) {
+  .contact .item img {
+    width: 60px;
+  }
+  .card {
+    height: 207px;
+  }
+  h1 {
+    font-size: 80px;
+  }
+  h2 {
+    font-size: 23px;
+  }
+  h3 {
+    font-size: 17px;
+  }
+  .logo h3 {
+    margin-top: 10px;
+    margin-left: 2px; 
+  }
+  .modal {
+    flex-direction: column;
+    height: auto;
+    img {
+      width: 90%;
+      padding: 0 20px;
+      margin-top: 30px;
+    }
+    .text {
+      width: 90%;
+      padding: 20px;
+      margin: 0;
+    }
+    .front {
+      margin-left: 10px;
+    }
+    .back {
+      margin-right: 10px;
+    }
+  }
+}
+@media (max-width: 600px) {
+  h1 {
+    font-size: 70px;
+  }
+  h3 {
+    font-size: 14px;
   }
 }
