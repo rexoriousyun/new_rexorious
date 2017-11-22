@@ -236,9 +236,9 @@ img {
   .works .card[value='5'] .color {
     background-color: #575757; }
   .works .card {
-    width: 50%;
+    width: calc(100%/3);
     position: relative;
-    max-height: 512px;
+    max-height: 341px;
     display: flex;
     overflow: hidden;
     cursor: pointer; }
@@ -335,8 +335,9 @@ img {
   .card {
     height: 492px; } }
 @media (max-width: 768px) {
-  .card {
-    height: 364px; } }
+  .works .card {
+    height: 364px;
+    width: 50%; } }
 @media (max-width: 767px) {
   .contact .item img {
     width: 60px; }
@@ -374,7 +375,7 @@ img {
   .contact .item img {
     width: 60px; }
 
-  .card {
+  .works .card {
     height: 207px; }
 
   h1 {
@@ -405,7 +406,7 @@ img {
       margin-left: 10px; }
     .modal .back {
       margin-right: 10px; } }
-@media (max-width: 600px) {
+@media (max-width: 400px) {
   h1 {
     font-size: 70px; }
 
