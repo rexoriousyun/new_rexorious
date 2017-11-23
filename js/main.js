@@ -1,3 +1,13 @@
+window.onload = function(){
+  $('#loader').css({'display':'none'});
+  $('header, .container').css({'display': 'flex'});
+  $('.backgroundVideo').animate({'opacity':'1'}, 'fast',
+    function(){
+      $('header, .container').animate({'opacity': '1'}, 'slow');
+    }
+  );
+}
+
 var menuOpen = false;
 var modalOpen = false;
 var currentNumber;
@@ -6,7 +16,7 @@ var maxModalValue = $('.modal:first-child').attr('value');
 $('.trigger').click(function(){
   if (modalOpen && menuOpen == false) {
     $('.modal').hide();
-    $('.works').animate({'opacity':'show'});
+    $('.works').animate({'opacity':'show'}, 200);
     $(this).css({'transition': 'transform 0.5s', 'transform': 'rotate(0deg)'});
     modalOpen = false;
   } else if (menuOpen == false){
@@ -46,9 +56,9 @@ $('.menu li').click(function(){
 })
 
 $('.card').hover(function() {
-    $(this).children('.color').animate({'opacity': 0.2});
+    $(this).children('.color').animate({'opacity': 0.2}, 200);
   }, function() {
-    $(this).children('.color').animate({'opacity': 1});
+    $(this).children('.color').animate({'opacity': 1}, 200);
   }
 );
 
@@ -67,7 +77,9 @@ $('.card').click(function(){
   $('.modal').each(function(index){
     var modalNumber = parseInt($(this).attr('value'));
     if (cardNumber == modalNumber){
-      $(this).animate({'opacity':'show'});
+      $(this).animate({'opacity':'show'}, function(){
+        $( 'html, body' ).animate( { scrollTop : '0' }, 500, 'swing' )
+      });
       $('.trigger').css({'transition': 'transform 0.5s', 'transform': 'rotate(45deg)'});
       currentNumber = modalNumber;
     }
@@ -88,7 +100,11 @@ function toLeft() {
   } else {
     currentNumber -= 1;
   }
-  $('.modal[value=' + currentNumber + ']').animate({'opacity':'show'});
+  $('.modal[value=' + currentNumber + ']').animate({'opacity':'show'}, 
+    function(){
+      $( 'html, body' ).animate( { scrollTop : '0' }, 500, 'swing' )
+    }
+  );
 }
 
 function toRight() {
@@ -103,7 +119,11 @@ function toRight() {
   } else {
     currentNumber += 1;
   }
-  $('.modal[value=' + currentNumber + ']').animate({'opacity':'show'});
+  $('.modal[value=' + currentNumber + ']').animate({'opacity':'show'}, 
+    function(){
+      $( 'html, body' ).animate( { scrollTop : '0' }, 500, 'swing' )
+    }
+  );
 }
 
 $('.front').click(function(){
